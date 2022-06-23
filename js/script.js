@@ -71,14 +71,14 @@ switcherBtn.addEventListener("click", ()=>{
     }
 })
     // check for saved user preference, if any, on load of the website
-if(localStorage.getItem("theme")!== null){
-    if(localStorage.getItem("theme")== "light"){
-        document.body.classList.remove("dark");
-    }
-    else{
-        document.body.classList.add("dark");
-    }
-}
+// if(localStorage.getItem("theme")!== null){
+//     if(localStorage.getItem("theme")== "light"){
+//         document.body.classList.remove("dark");
+//     }
+//     else{
+//         document.body.classList.add("dark");
+//     }
+// }
     changeIcon();
 }
 themeLightDark();
