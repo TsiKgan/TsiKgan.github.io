@@ -1,5 +1,7 @@
-/* ---------------------------------------------------------------
 
+
+
+/*
 ******************** Table of Contents ***************************
 
 01. = fonts
@@ -59,7 +61,7 @@ body.dark{
    --black-70:hsla(0,0%,100%,0.7);
    --border-color-1:hsla(0,0%,100%,0.12);
    --border-color-2:hsla(0,0%,100%,0.05);
-   --shadow--color:hsla(0,0%,0,0.15);
+   --shadow-color:hsla(0,0%,0,0.15);
 }
 /* 04. = base */
 
@@ -183,6 +185,7 @@ button{
     background-color: var(--main-color);
     color: var(--white);
     border-radius: 30px;
+    border: none;
     font-weight: 500;
     font-size: 16px;
     text-transform: capitalize; 
@@ -198,7 +201,7 @@ button{
 .btn.btn::after{
     content: '';
     position: absolute; /*absolute to .btn's relative*/
-    background-color: var(--main-color);
+    background-color: var(--black-70);
 }
 
 .btn::before{
@@ -220,7 +223,7 @@ button{
 
 .btn:hover{
     background-color:var(--white-alpha-50);
-    color:var(--main-color);
+    color:var(--black-90);
 }
 
 .btn:hover::before{
@@ -236,7 +239,34 @@ button{
     animation: spin 2s linear infinite;
 }
 /* 09. = forms */
+.input-box{
+    margin-bottom: 20px;
+}
 
+.input-control::placeholder{
+    color:var(--black-70);
+}
+
+.input-control{
+    display:block;
+    width:100%;
+    height: 42px;
+    background-color: transparent;
+    border:none;
+    border-bottom: 1px solid var(--border-color-1);
+    font-size: 16px;
+    font-family: inherit;
+    color:var(--black-90);
+}
+
+.input-control:focus{
+    outline:none;
+}
+
+textarea.input-control{
+    height:120px;
+    resize:none;
+}
 /* 10. = fancy border-radius box */
 .fancy-br-box{
     height:400px;
@@ -275,7 +305,7 @@ button{
     right:0;
     bottom: 0;
     color:var(--black-90);
-    z-index: 3;
+    z-index: 10;
     border:none;
     border-radius: 50%;
     background-color: transparent;
@@ -318,6 +348,15 @@ button{
     }
     50%{
         transform:translateY(100px);
+    }
+}
+
+@keyframes moveX{
+    0%, 100%{
+        transform: translateX(0);
+    }
+    50%{
+        transform:translateX(20px);
     }
 }
 
@@ -369,7 +408,7 @@ button{
     left:0;
     top:0;
     width:100%;
-    z-index:2;
+    z-index:6;
     padding: 8px 0;
 }
 
@@ -396,6 +435,7 @@ button{
     width:40px;
     border:none;
     background-color: transparent;
+    
 }
 
 .nav-toggler span{
@@ -453,6 +493,7 @@ button{
     margin-top:8px;
     visibility: hidden;
     transition: visibility 0s ease 0.5s;
+    z-index: 9;
 }
 
 .nav.active{
@@ -538,7 +579,7 @@ button{
 .home{
     padding:180px 0 80px;
     position: relative;
-    z-index: 1;
+    z-index: 2;
     overflow: hidden;
 }
 
@@ -645,6 +686,7 @@ button{
     opacity:0.2;
     animation: spinDown 8s linear infinite;
     z-index: -1;
+    overflow: hidden;
 }
 
 .about-tabs{
@@ -658,7 +700,6 @@ button{
     text-transform:capitalize;
     display:inline-block;
     color:var(--black-90);
-    /* font-family: inherit; */
     font-size:20px;
     cursor:pointer;
     font-weight:500;
@@ -800,7 +841,123 @@ button{
 /* 19. = pricing section */
 
 /* 20. = contact section */
+.contact{
+    overflow:hidden;
+}
 
+.contact-title{
+    text-align:center; 
+    margin:0 auto 50px; 
+    font-size: 18px;
+    font-weight: 500;
+    text-transform: capitalize;
+    color:var(--main-color)
+}
+
+.contact-details,
+.contact-form{
+    grid-column: span 6;
+    position: relative;
+}
+
+.contact .section-title{
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+.contact-details .text-1{
+    margin-bottom: 40px;
+}
+
+.contact-info-item{
+    position:relative;
+    margin-bottom: 10px;
+    padding-left:30px;
+
+}
+
+.contact-info-item i{
+    position: absolute;
+    left:0;
+    top:5px;
+    font-size: 14px;
+
+}
+
+.contact-details .social-links{
+    margin-top:25px;
+}
+.contact-details .social-links a{
+    height: 35px;
+    width:35px;
+    color:var(--main-color);
+    display:inline-flex;
+    align-items: center;
+    justify-content: center;
+    border:1px solid var(--main-color);
+    border-radius: 50%;
+    margin-right:5px;
+    transition: color 0.3s ease;
+    position: relative;
+}
+
+.contact-details .social-links a:hover{
+    color:var(--white);
+}
+
+.contact-details .social-links a::before{
+    content:'';
+    position: absolute;
+    left:0;
+    top:0;
+    height:100%;
+    width: 100%;
+    background-color: var(--main-color);
+    border-radius: 50%;
+    z-index:-1;
+    transform: scale(0);
+    transition: transform 0.3s ease ;
+}
+
+.contact-details .social-links a:hover::before{
+    transform:scale(1);
+}
+
+.contact-form::before,
+.contact-form::after{
+    content:'';
+    position:absolute;
+    transform: rotate(20deg);
+}
+
+.contact-form::before{
+    right:-4px;
+    top:0px;
+    height:40px;
+    width:40px;
+    background-color: var(--light-red);
+    
+}
+
+.contact-form::after{
+    left:-15px;
+    bottom:0;
+    height:20px;
+    width:20px;
+    background-color: var(--main-color);
+}
+
+.contact-form .icon-box{
+    width:120px;
+    animation:moveX 4s linear infinite;
+}
+
+.contact-box {
+    background-color: var(--white-alpha-40);
+    padding:50px;
+    border-radius:30px;
+    box-shadow:0 0 10px var(--shadow-color);
+}
 /* 21. = footer */
 
 /* 22. = responsive */
@@ -822,16 +979,8 @@ button{
     .section-title .sub-title{
         font-size: 32px;
     }
-    .hobbies-item{
-        flex-direction:column;
-        text-align: center;
-        align-items:center;
-    }
-    .hobbies-item .img-box{
-        margin-bottom: 20px;
-    }
-    .hobbies-item .text{
-        padding-left:0;
+    .contact-box{
+        padding:30px;
     }
 }
 
@@ -871,6 +1020,14 @@ button{
     .about-text{
         margin-top:60px;
     }
+    .contact-details,
+    .contact-form{
+        grid-column: span 12;
+    }
+
+    .contact-form{
+        margin-top:40px;
+    }
 }
 
 
@@ -878,13 +1035,156 @@ button{
     .btn{
         margin-left: 35%;
     }
-    .service-item{
-        grid-column: span 12;
-    }
-    .hobbies-item{
-        grid-column: span 12;
-    }
+
+
     .row{
         grid-gap:15px;
+    }
+}
+
+
+/*Hobbies disintegrate hover effec*/
+.container-freetime{
+	max-width: 1170px;
+	margin:auto;
+   
+    
+}
+
+.hobbies.section-padding{
+
+	min-height: 100vh;
+	padding:80px 0;
+    box-sizing:border-box;
+   
+}
+
+.row-freetime{
+	display:flex;
+	flex-wrap:wrap;
+}
+
+.item{
+	flex: 0 0 25%;
+	max-width: 25%;
+	padding: 15px;	
+    
+}
+
+.item-inner{
+	border:10px solid var(--body-bg-color);
+	box-shadow: 0 0 3px #999999;
+	position: relative;
+	background-color: #222;
+    
+}
+.item-inner .img-box{
+	position:relative;
+}
+.item-inner img{
+	width: 100%;
+	display:block;
+	position:absolute;
+	left:0;
+	top:0;
+	transition: all 0.3s linear;
+	z-index:4;
+}
+
+.item-inner img.visibility-hidden{
+	position: relative;
+	visibility: hidden;
+}
+
+.item-inner img:nth-child(1){
+	-webkit-clip-path: inset(0 75% 0 0);
+	clip-path: inset(0 75% 0 0);
+	transition-delay: 0.4s ;
+}
+.item-inner img:nth-child(2){
+	-webkit-clip-path: inset(0 50% 0 24%);
+	clip-path: inset(0 50% 0 24%);
+	transition-delay: 0.3s ;
+}
+.item-inner img:nth-child(3){
+	-webkit-clip-path: inset(0 24% 0 49%);
+	clip-path: inset(0 25% 0 49%);
+	transition-delay: 0.2s ;
+}
+.item-inner img:nth-child(4){
+	-webkit-clip-path: inset(0 0 0 74%);
+	clip-path: inset(0 0 0 74%);
+	
+}
+
+.item-inner:hover img{
+	transform: translateX(20px) scale(0.6);
+	opacity: 0;
+
+}
+
+.info-box{
+	position: absolute;
+	z-index:1;
+	left:0;
+	top:0;
+	height:100%;
+	width: 100%;
+	padding: 20px;
+	display:flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	opacity: 0;
+	transition: all 1.5s ease-in-out;
+}
+
+.item-inner:hover .info-box{
+	opacity: 1;
+}
+
+
+.info-box h1{
+	font-size: 22px;
+	color:#ffffff;
+	margin:0 0 15px;
+}
+
+.info-box p{
+	font-size: 14px;
+	line-height: 20px;
+	color:#eee;
+	margin:0 0  20px;
+}
+
+
+@media(max-width: 991px){
+	.item{
+		flex: 0 0 50%;
+		max-width:50%;
+	
+	}
+    .info-box h1{
+        font-size: 32px;
+    }
+    .info-box p{
+        font-size: 20px;
+        line-height: 1.2;
+    }
+}
+
+@media(max-width: 575px){
+	.item{
+		flex: 0 0 100%;
+		max-width:100%;
+	
+	}
+    .info-box h1{
+        font-size: 52px;
+    }
+    .info-box p{
+        font-size: 24px;
+        line-height: 1.4;
     }
 }
