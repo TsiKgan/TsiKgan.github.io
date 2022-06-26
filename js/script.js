@@ -1,15 +1,17 @@
 
-window.addEventListener("load", ()=>{
-    /*--preloader--*/
-    document.querySelector(".js-preloader").classList.add("fade-out");
-    setTimeout(()=>{
-        document.querySelector(".js-preloader").style.display= "none";
-    },600)
-})
+// window.addEventListener("load", ()=>{
+//     /*--preloader--*/
+//     document.querySelector(".js-preloader").classList.add("fade-out");
+//     setTimeout(()=>{
+//         document.querySelector(".js-preloader").style.display= "none";
+//     },600)
+// })
 
 /*------------ About Tabs -----------------*/
 const tabsContainer = document.querySelector(".about-tabs"),
 aboutSection = document.querySelector(".about-section");
+// aboutImage = document.querySelector(".abtrow");
+// aboutText = document.querySelector(".tab-content");
 
 tabsContainer.addEventListener("click", (e) =>{
         if(e.target.classList.contains("tab-item") && !e.target.classList.contains("active")){
@@ -18,8 +20,17 @@ tabsContainer.addEventListener("click", (e) =>{
 
         const target = e.target.getAttribute("data-target");
         console.log(target);
+
+        
         aboutSection.querySelector(".tab-content.active").classList.remove("active");
         aboutSection.querySelector(target).classList.add("active");
+
+        
+        // aboutSection.querySelector(target).classList.add("active");
+        // 
+        // aboutSection.querySelector(target).classList.add("active");
+        
+        
     }
 });
 
